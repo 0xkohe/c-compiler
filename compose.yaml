@@ -1,0 +1,15 @@
+services:
+  compilerbook:
+    #image: gcc:latest # 使用するベースイメージ
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: compilerbook
+    volumes:
+      - type: bind
+        source: ./9cc
+        target: /9cc # ホストの9ccディレクトリをコンテナ内にマウント
+    working_dir: /9cc    # コンテナ内の作業ディレクトリを指定
+    tty: true
+    #entrypoint: ["make", "test"] # デフォルトで実行するコマンド
+
