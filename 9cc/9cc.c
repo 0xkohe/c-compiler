@@ -63,7 +63,7 @@ bool consume(char op) {
 // それ以外の場合にはエラーを報告する。
 void expect(char op) {
   if (token->kind != TK_RESERVED || token->str[0] != op)
-    error_at(token->str, "expected '%c'", op); 
+    error_at(token->str, "expected '%c'", op);
   token = token->next;
 }
 
@@ -71,15 +71,13 @@ void expect(char op) {
 // それ以外の場合にはエラーを報告する。
 int expect_number() {
   if (token->kind != TK_NUM)
-	  error_at(token->str, "expected a number");
+    error_at(token->str, "expected a number");
   int val = token->val;
   token = token->next;
   return val;
 }
 
-bool at_eof() {
-  return token->kind == TK_EOF;
-}
+bool at_eof() { return token->kind == TK_EOF; }
 
 // 新しいトークンを作成してcurに繋げる
 Token *new_token(TokenKind kind, Token *cur, char *str) {
@@ -92,7 +90,7 @@ Token *new_token(TokenKind kind, Token *cur, char *str) {
 
 // 入力文字列pをトークナイズしてそれを返す
 Token *tokenize() {
-	char *p = user_input;
+  char *p = user_input;
   Token head;
   head.next = NULL;
   Token *cur = &head;
