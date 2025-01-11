@@ -188,14 +188,13 @@ Node *mul() {
 }
 
 Node *unary() {
-	if (consume('+')) {
-		return unary();
-	}
-	if (consume('-')) {
-		return new_node(ND_SUB, new_node_num(0), unary());
-	}
-	return primary();
-   
+  if (consume('+')) {
+    return unary();
+  }
+  if (consume('-')) {
+    return new_node(ND_SUB, new_node_num(0), unary());
+  }
+  return primary();
 }
 Node *primary() {
   if (consume('(')) {
@@ -252,7 +251,7 @@ int main(int argc, char **argv) {
   printf(".intel_syntax noprefix\n");
   printf(".globl main\n");
   printf("main:\n");
-  
+
   gen(node);
 
   printf("  pop rax\n");
